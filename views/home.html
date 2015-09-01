@@ -28,9 +28,11 @@
                     <p><strong>
                         Comments:</strong>  <% _.each(comments, function(item)
                         { %>
+                            <% // Create a "X" button that will delete the comment from both the page and MongoDB. %>
                             <p>"<%= item.comment %>" - <%= item.person %><button id="<%=_id%>=<%= item._id %>" onclick="return deleteComment(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
                         <% }); %>
                         </br>
+                        <% // Create a form for adding new comments with a username, we use Underscore template so we can programmatically add ids of books into the HTML tags alongside adding a comment block for each book. %>
                         <form id='<%=_id %>form'>
                             <div class="form-group">
                                 <label>Add a New Comment</label>
