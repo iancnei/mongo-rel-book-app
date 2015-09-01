@@ -18,21 +18,30 @@
             <h1>Book App</h1>
 
             <div id="booksCon">
-                <script type="text/template" id="bookTemp">
-                    <div class="book">
-                        <hr>
-                        <h3><%= title %></h3>
-                        <p>Author: <%= author %></p>
-                        <p><em><%= description %></em></p>
-                        <p><strong>
-                            Comments:  <% _.each(comments, function(item)
-                            { %>
-                                <p>"<%= item.comment %>" - <%= item.person %></p>
-                            <% }); %>
-                        </strong></p>
-                    </div>
-                </script>
             </div>
+            <script type="text/template" id="bookTemp">
+                <div class="book">
+                    <hr>
+                    <h3><%= title %></h3>
+                    <p>Author: <%= author %></p>
+                    <p><em><%= description %></em></p>
+                    <p><strong>
+                        Comments:</strong>  <% _.each(comments, function(item)
+                        { %>
+                            <p>"<%= item.comment %>" - <%= item.person %><button id="<%=_id%>=<%= item._id %>" onclick="return deleteComment(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
+                        <% }); %>
+                        </br>
+                        <form id='<%=_id %>form'>
+                            <div class="form-group">
+                                <label>Add a New Comment</label>
+                                <input type="text" placeholder="Add Commet" class="form-control" name="comment" id='<%=_id%>comment'>
+                                <input type="text" placeholder="Username" class="form-control" name="person" id='<%=_id%>person'>
+                                <button id='<%=_id %>' class="btn btn-default" type="submit" onclick="return sendComment(this)">Post Comment</button>
+                            </div>
+                        </form>
+                    </p>
+                </div>
+            </script>
         </div>
     </body>
 </html>
